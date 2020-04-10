@@ -9,3 +9,15 @@ eureka:
 spring:
   application:
     name: liazhan-member
+
+####swagger相关配置
+swagger:
+  base-package: com.liazhan.member.service
+  title: 微服务电商项目-会员服务接口
+  description: 会员服务
+  version: 1.1
+  terms-of-service-url: www.baidu.com
+  contact:
+    name: liazhan
+    email: 33421352+liazhan@users.noreply.github.com
+

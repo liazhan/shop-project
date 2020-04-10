@@ -1,20 +1,17 @@
-package com.liazhan.weixin;
+package com.liazhan;
 
-import com.spring4all.swagger.EnableSwagger2Doc;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
  * @version V1.0
- * @description: 微信服务入口类
+ * @description: 网关入口类
  * @author: Liazhan
- * @date: 2020/4/8 0:14
+ * @date: 2020/4/10 14:35
  */
 @SpringBootApplication
-@EnableSwagger2Doc
-public class AppWeiXin {
-
+public class AppGateway {
     public static void main(String[] args) {
-        SpringApplication.run(AppWeiXin.class,args);
+        SpringApplication.run(AppGateway.class,args);
     }
 }

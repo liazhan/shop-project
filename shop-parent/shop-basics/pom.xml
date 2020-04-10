@@ -13,6 +13,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>shop-basics-cloud-eureka</module>
+        <module>shop-basics-cloud-gateway</module>
     </modules>
 
 </project>
