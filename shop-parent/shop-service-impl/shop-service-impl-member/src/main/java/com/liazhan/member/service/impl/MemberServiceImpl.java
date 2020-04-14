@@ -1,12 +1,13 @@
 package com.liazhan.member.service.impl;
 
+import com.liazhan.base.BaseResponse;
+import com.liazhan.base.consts.BaseConst;
 import com.liazhan.member.feign.WeiXinServiceFeign;
 import com.liazhan.member.service.MemberService;
 import com.liazhan.weixin.entity.TestEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -25,9 +26,9 @@ public class MemberServiceImpl implements MemberService {
     private String name;
 
     @Override
-    public TestEntity callWeiXin() {
-        TestEntity test = weiXinServiceFeign.test();
-        test.setName(name);
-        return test;
+    public BaseResponse<TestEntity> callWeiXin() {
+        BaseResponse<TestEntity> testResponse = weiXinServiceFeign.test();
+        testResponse.getData().setName(name);
+        return testResponse;
     }
 }

@@ -1,5 +1,6 @@
 package com.liazhan.member.service;
 
+import com.liazhan.base.BaseResponse;
 import com.liazhan.weixin.entity.TestEntity;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -20,5 +21,5 @@ public interface MemberService {
      */
     @ApiOperation(value = "调用微信服务测试接口")
     @GetMapping("/callWeiXin")
-    public TestEntity callWeiXin();
+    public BaseResponse<TestEntity> callWeiXin();
 }

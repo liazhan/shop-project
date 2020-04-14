@@ -28,5 +28,11 @@
             <artifactId>swagger-spring-boot-starter</artifactId>
             <version>1.7.0.RELEASE</version>
         </dependency>
+        <!-- 核心通用模块包 -->
+        <dependency>
+            <artifactId>shop-common-core</artifactId>
+            <groupId>com.liazhan</groupId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 </project>

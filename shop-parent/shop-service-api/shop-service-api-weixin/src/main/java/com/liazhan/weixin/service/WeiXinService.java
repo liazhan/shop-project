@@ -1,5 +1,6 @@
 package com.liazhan.weixin.service;
 
+import com.liazhan.base.BaseResponse;
 import com.liazhan.weixin.entity.TestEntity;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -19,5 +20,5 @@ public interface WeiXinService {
      */
     @ApiOperation(value = "测试接口")
     @GetMapping("/test")
-    public TestEntity test();
+    public BaseResponse<TestEntity> test();
 }
