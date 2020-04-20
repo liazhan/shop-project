@@ -28,5 +28,11 @@
             <artifactId>weixin-java-mp</artifactId>
             <version>${weixin-java-mp.version}</version>
         </dependency>
+        <!-- 腾讯短信api -->
+        <dependency>
+            <groupId>com.tencentcloudapi</groupId>
+            <artifactId>tencentcloud-sdk-java</artifactId>
+            <version>3.1.38</version>
+        </dependency>
     </dependencies>
 </project>

@@ -1,6 +1,7 @@
 package com.liazhan.weixin.mp.handler;
 
 import com.liazhan.weixin.mp.builder.TextBuilder;
+import com.liazhan.weixin.sms.SendSms;
 import me.chanjar.weixin.common.session.WxSessionManager;
 import me.chanjar.weixin.mp.api.WxMpService;
 import me.chanjar.weixin.mp.bean.message.WxMpXmlMessage;
@@ -20,9 +21,12 @@ public class MsgHandler extends AbstractHandler {
                                     Map<String, Object> context, WxMpService weixinService,
                                     WxSessionManager sessionManager) {
 
-        //TODO 组装回复消息
-        String content = "收到信息内容：" + wxMessage.getContent();
-
+        //向公众号发送手机号
+        String content = wxMessage.getContent();
+        //向手机号发送短信
+        String code = SendSms.send(content);
+        //返回提示
+        content = "已发送验证码，请注意查收！";
         return new TextBuilder().build(content, wxMessage, weixinService);
 
     }
