@@ -13,6 +13,13 @@
     <packaging>jar</packaging>
 
     <dependencies>
+        <!--member dto-->
+        <dependency>
+            <artifactId>shop-api-member-dto</artifactId>
+            <groupId>com.liazhan</groupId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+        <!--weixin api-->
         <dependency>
             <artifactId>shop-service-api-weixin</artifactId>
             <groupId>com.liazhan</groupId>

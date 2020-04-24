@@ -7,6 +7,7 @@
         <module>shop-service-api</module>
         <module>shop-service-impl</module>
         <module>shop-common</module>
+        <module>shop-api-dto</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>

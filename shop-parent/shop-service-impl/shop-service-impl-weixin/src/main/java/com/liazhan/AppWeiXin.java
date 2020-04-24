@@ -1,8 +1,9 @@
-package com.liazhan.weixin;
+package com.liazhan;
 
 import com.spring4all.swagger.EnableSwagger2Doc;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 
 /**
  * @version V1.0
@@ -12,6 +13,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  */
 @SpringBootApplication
 @EnableSwagger2Doc
+@EnableFeignClients
 public class AppWeiXin {
 
     public static void main(String[] args) {

@@ -5,3 +5,6 @@ spring:
       name: member,common # 对应 {application} 部分
       profile: dev # 对应 {profile} 部分
       label: master # 对应 {label} 部分，即 Git 的分支。如果配置中心使用的是本地存储，则该参数无用
+  #解决不允许同一个服务中接口中存在多个feign实体bean问题
+  main:
+      allow-bean-definition-overriding: true

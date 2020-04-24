@@ -13,4 +13,7 @@ public interface BaseConst {
     Integer HTTP_RES_CODE_500 = 500;
     //常用响应成功消息
     String HTTP_RES_CODE_200_MSG = "success";
+
+    //用户不存在
+    Integer HTTP_RES_CODE_201 = 201;
 }
