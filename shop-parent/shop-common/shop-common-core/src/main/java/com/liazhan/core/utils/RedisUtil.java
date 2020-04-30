@@ -56,4 +56,28 @@ public class RedisUtil {
     public Boolean delKey(String key){
         return stringRedisTemplate.delete(key);
     }
+
+    /**
+     * 开启redis事务
+     */
+    public void begin(){
+        //开启redis事务权限
+        stringRedisTemplate.setEnableTransactionSupport(true);
+        //开启事务
+        stringRedisTemplate.multi();
+    }
+
+    /**
+     * 提交事务
+     */
+    public void exec(){
+        stringRedisTemplate.exec();
+    }
+
+    /**
+     * 回滚redis事务
+     */
+    public void discard(){
+        stringRedisTemplate.discard();
+    }
 }

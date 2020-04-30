@@ -14,4 +14,9 @@ public interface UserDao extends JpaRepository<UserDO,Integer> {
      * 根据手机号查询用户是否存在
      */
     boolean existsByPhone(String phone);
+
+    /*
+     * 根据手机号和密码查询用户
+     */
+    UserDO findByPhoneAndPassword(String phone,String password);
 }
