@@ -5,17 +5,24 @@ import com.liazhan.base.BaseResponse;
 import com.liazhan.base.BaseServiceImpl;
 import com.liazhan.base.consts.BaseConst;
 import com.liazhan.core.utils.DtoUtil;
+import com.liazhan.core.utils.IPUtil;
+import com.liazhan.core.utils.RedisUtil;
+import com.liazhan.member.consts.MemberConst;
 import com.liazhan.member.dao.UserDao;
 import com.liazhan.member.dao.entity.UserDO;
 import com.liazhan.member.feign.WeiXinVerificationCodeServiceFeign;
 import com.liazhan.member.input.dto.UserRegistInpDTO;
 import com.liazhan.member.service.MemberRegistService;
+import com.qiniu.util.Auth;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.DigestUtils;
 import org.springframework.web.bind.annotation.RestController;
 
+
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
-import java.util.Date;
+
 
 /**
  * @version:V1.0
@@ -29,6 +36,8 @@ public class MemberRegistServiceImpl extends BaseServiceImpl<JSONObject> impleme
     private WeiXinVerificationCodeServiceFeign weiXinVerificationCodeServiceFeign;
     @Autowired
     private UserDao userDao;
+    @Autowired
+    private RedisUtil redisUtil;
 
     @Override
     public BaseResponse<JSONObject> regist(@Valid UserRegistInpDTO userInpDTO) {
@@ -46,4 +55,32 @@ public class MemberRegistServiceImpl extends BaseServiceImpl<JSONObject> impleme
         UserDO save = userDao.save(userDO);
         return save.getUserId()==null?getResultError("注册失败！"):getResultSuccess("注册成功！");
     }
+
+    @Override
+    public BaseResponse<JSONObject> getUploadHeadImgToken(HttpServletRequest request) {
+        //1.获取请求方ip,判断是否已超过请求次数,若是,则返回操作繁忙,否则次数+1
+        String ipAddr = IPUtil.getIpAddr(request);
+        String tokenCount = redisUtil.getString(MemberConst.HEADIMG_TOKEN_COUNT_PREFIX + ipAddr);
+        if(StringUtils.isBlank(tokenCount)){
+            redisUtil.setString(MemberConst.HEADIMG_TOKEN_COUNT_PREFIX+ipAddr,
+                    "1",MemberConst.HEADIMG_TOKEN_COUNT_TIMEOUT);
+        }else{
+            Integer tokenCountInt = Integer.valueOf(tokenCount);
+            if(tokenCountInt<MemberConst.HEADIMG_TOKEN_COUNT_MAX){
+                tokenCountInt++;
+                redisUtil.setString(MemberConst.HEADIMG_TOKEN_COUNT_PREFIX+ipAddr,
+                        tokenCountInt+"",MemberConst.HEADIMG_TOKEN_COUNT_TIMEOUT);
+            }else{
+                return getResultError("图片上传繁忙，请稍后再试！");
+            }
+        }
+        //2.生成token
+        Auth auth = Auth.create(MemberConst.QINIU_ACCESSKEY, MemberConst.QINIU_SECRETKEY);
+        String upToken = auth.uploadToken(MemberConst.QINIU_HEADIMG_BUCKET);
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("token",upToken);
+
+        return getResultSuccess(jsonObject);
+    }
+
 }
