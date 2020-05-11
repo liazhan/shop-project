@@ -71,7 +71,7 @@
 [docker安装redis](https://blog.csdn.net/daziyuanazhen/article/details/105529587)  
 [docker安装RabbitMQ](https://blog.csdn.net/daziyuanazhen/article/details/105491300)  
 <br>
-ok,接着需要专门创建一个mysql数据库,然后创建表,[点击获取建表sql语句](https://github.com/liazhan/shop-project-sql)  
+ok,接着需要[配置数据库](https://github.com/liazhan/shop-project-sql)  
 <br>
 之后在github上创建一个仓库,用来放项目的配置文件,可以参考复制[我的配置文件仓库](https://github.com/liazhan/shop-project-config),然后对里边后缀名为dev的配置文件进行更改.主要是mysql、redis、rabbitmq、公众号等配置的更改。不清楚的话可以查看搭建过程博客记录。  
 <br>
