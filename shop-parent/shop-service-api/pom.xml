@@ -14,6 +14,7 @@
     <modules>
         <module>shop-service-api-member</module>
         <module>shop-service-api-weixin</module>
+        <module>shop-service-api-product</module>
     </modules>
 
     <dependencies>

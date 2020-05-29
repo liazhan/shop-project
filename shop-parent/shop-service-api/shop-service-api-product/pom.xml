@@ -3,26 +3,21 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>shop-parent</artifactId>
+        <artifactId>shop-service-api</artifactId>
         <groupId>com.liazhan</groupId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>shop-api-dto</artifactId>
-    <packaging>pom</packaging>
-    <modules>
-        <module>shop-api-member-dto</module>
-        <module>shop-api-weixin-dto</module>
-        <module>shop-api-product-dto</module>
-    </modules>
+    <artifactId>shop-service-api-product</artifactId>
+    <packaging>jar</packaging>
 
     <dependencies>
-        <!-- swagger-spring-boot -->
+        <!--product dto-->
         <dependency>
-            <groupId>com.spring4all</groupId>
-            <artifactId>swagger-spring-boot-starter</artifactId>
-            <version>1.7.0.RELEASE</version>
+            <artifactId>shop-api-product-dto</artifactId>
+            <groupId>com.liazhan</groupId>
+            <version>0.0.1-SNAPSHOT</version>
         </dependency>
     </dependencies>
 </project>
