@@ -1,23 +1,20 @@
 # 一、概述
 目前技术栈如下：
 
-①SpringBoot：2.2.6.RELEASE
+* SpringBoot：2.2.6.RELEASE  
+* SpringCloud：Hoxton.SR3  
+* Swagger：1.7.0.RELEASE  
+* JPA：2.2.6.RELEASE  
+* Docker：19.03.8  
+* Mysql：8.0.19  
+* Redis：5.0.8  
+* RabbitMQ：rabbitmq:3-management  
+* kafka版本：2.5  
+* zookeeper版本：3.6.1  
+* elasticsearch版本：7.6.2  
+* canal：1.1.4  
+* VUE：2.9.6  
 
-②SpringCloud：Hoxton.SR3
-
-③Swagger：1.7.0.RELEASE
-
-④JPA：2.2.6.RELEASE
-
-⑤Docker：19.03.8
-
-⑥Mysql：8.0.19
-
-⑦Redis：5.0.8
-
-⑧RabbitMQ：rabbitmq:3-management
-
-⑨VUE：2.9.6  
 
 <br>
 
@@ -59,7 +56,9 @@
 
 [微服务电商实战(十)登陆接口](https://blog.csdn.net/daziyuanazhen/article/details/105796287)
 
-[微服务电商实战(十一)搭建vue项目对接注册登陆接口，解决跨域问题，使用七牛云实现头像上传](https://blog.csdn.net/daziyuanazhen/article/details/105913186)
+[微服务电商实战(十一)搭建vue项目对接注册登陆接口，解决跨域问题，使用七牛云实现头像上传](https://blog.csdn.net/daziyuanazhen/article/details/105913186)  
+
+[微服务电商实战(十二)搭建商品服务搜索引擎](https://blog.csdn.net/daziyuanazhen/article/details/106056422)
 
 <br>
 
@@ -70,8 +69,14 @@
 [docker安装mysql](https://blog.csdn.net/daziyuanazhen/article/details/105531164)  
 [docker安装redis](https://blog.csdn.net/daziyuanazhen/article/details/105529587)  
 [docker安装RabbitMQ](https://blog.csdn.net/daziyuanazhen/article/details/105491300)  
+[docker安装elasticsearch](https://blog.csdn.net/daziyuanazhen/article/details/106017708)
+
 <br>
-ok,接着需要[配置数据库](https://github.com/liazhan/shop-project-sql)  
+ok,接着需要  
+
+[配置数据库](https://github.com/liazhan/shop-project-sql)  
+
+[新增es数据](https://blog.csdn.net/daziyuanazhen/article/details/106056422)  
 <br>
 之后在github上创建一个仓库,用来放项目的配置文件,可以参考复制[我的配置文件仓库](https://github.com/liazhan/shop-project-config),然后对里边后缀名为dev的配置文件进行更改.主要是mysql、redis、rabbitmq、公众号等配置的更改。不清楚的话可以查看搭建过程博客记录。  
 <br>
@@ -86,18 +91,11 @@ git clone https://github.com/liazhan/shop-project.git
 ok,接下来就可以运行我们的项目了。  
 首先运行config服务，运行完成会发现报了个找不到eureka的错误，不用管它  
 接着运行eureka服务，运行完成后config就会注册到eureka中，不再报错  
-最后依次运行gateway、weixin、member服务  
+最后依次运行gateway、weixin、member、product服务  
 运行完成后可以打开swagger界面来查看测试接口等，访问http://127.0.0.1/swagger-ui.html 可以查看所有服务的接口文档  
 <br>
 3、前端项目
-首先使用git克隆下来  
-git clone https://github.com/liazhan/shop-project-web.git  
-<br>
-接着可以用idea打开前端项目,打开Terminal界面    
-输入npm install按回车安装模块,最好是使用cnpm,这样安装更快,具体可以查看[微服务电商实战(十一)搭建vue项目对接注册登陆接口，解决跨域问题，使用七牛云实现头像上传](https://blog.csdn.net/daziyuanazhen/article/details/105913186)  
-<br>
-最后输入npm run dev按回车运行  
-访问http://localhost:8080/ 即可
+https://github.com/liazhan/shop-project-web
 
 
 
